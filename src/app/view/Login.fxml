@@ -49,7 +49,7 @@
                         <Insets top="10.0" />
                     </GridPane.margin>
                 </PasswordField>
-                <Button layoutX="115.0" layoutY="212.0" mnemonicParsing="false" onAction="#" text="Login" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                <Button layoutX="115.0" layoutY="212.0" mnemonicParsing="false" text="Login" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                     <font>
                         <Font size="18.0" />
                     </font></Button>
