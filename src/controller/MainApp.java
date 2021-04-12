@@ -21,7 +21,7 @@ public class MainApp extends Application {
 
         initRootLayout();
 
-        showPersonOverview();
+        showListeVilleview();
     }
     
     /**
@@ -46,15 +46,15 @@ public class MainApp extends Application {
     /**
      * Shows the person overview inside the root layout.
      */
-    public void showPersonOverview() {
+    public void showListeVilleview() {
         try {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("../views/PersonOverView.fxml"));
-            AnchorPane personOverview = (AnchorPane) loader.load();
+            loader.setLocation(MainApp.class.getResource("../views/ListeVille.fxml"));
+            AnchorPane listeVilleview = (AnchorPane) loader.load();
             
             // Set person overview into the center of root layout.
-            rootLayout.setCenter(personOverview);
+            rootLayout.setCenter(listeVilleview);
         } catch (IOException e) {
             e.printStackTrace();
         }
