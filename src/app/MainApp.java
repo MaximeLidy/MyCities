@@ -51,23 +51,38 @@ public class MainApp extends Application {
     /**
      * Shows the person overview inside the root layout.
      */
+
     public void showLogin() {
         try {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/Login.fxml"));
             AnchorPane login = (AnchorPane) loader.load();
-            
+
             // Set person overview into the center of root layout.
             rootLayout.setCenter(login);
 
             LoginController controller = loader.getController();
             controller.setMainApp(this);
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /*public void showListeVilleview() {
+        try {
+            // Load person overview.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("../views/ListeVille.fxml"));
+            AnchorPane listeVilleview = (AnchorPane) loader.load();
+            
+            // Set person overview into the center of root layout.
+            rootLayout.setCenter(listeVilleview);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
     
 	/**
 	 * Returns the main stage.
