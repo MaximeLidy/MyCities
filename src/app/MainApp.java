@@ -2,6 +2,7 @@ package app;
 
 import java.io.IOException;
 
+import app.controller.ListeVilleController;
 import app.controller.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -69,20 +70,28 @@ public class MainApp extends Application {
         }
     }
 
-    /*public void showListeVilleview() {
+    public void startListeVille(){
+        initRootLayout();
+        showListeVille();
+    }
+
+    public void showListeVille() {
         try {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("../view/ListeVille.fxml"));
-            AnchorPane listeVilleview = (AnchorPane) loader.load();
+            loader.setLocation(MainApp.class.getResource("view/ListeVille.fxml"));
+            AnchorPane listeVille = (AnchorPane) loader.load();
             
             // Set person overview into the center of root layout.
-            rootLayout.setCenter(listeVilleview);
+            rootLayout.setCenter(listeVille);
+
+            ListeVilleController controller = loader.getController();
+            controller.setMainApp(this);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }*/
+    }
     
 	/**
 	 * Returns the main stage.
