@@ -78,10 +78,10 @@ public class BatimentsParVilleController implements Initializable {
         //connection = SqlConnection.CustomerConnection();
         connection = DBConnection.Connector();
         try {
-            String SQL = "Select user_nom From user";
+            String SQL = "Select ville_nom From ville";
             ResultSet rs = connection.createStatement().executeQuery(SQL);
             while(rs.next()){
-                data.add(rs.getString("user_nom"));
+                data.add(rs.getString("ville_nom"));
             }
             combo.setItems(data);
 
