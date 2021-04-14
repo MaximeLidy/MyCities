@@ -2,13 +2,17 @@ package app;
 
 import java.io.IOException;
 
-import app.controller.ListeVilleController;
+import app.model.Batiment;
+import app.controller.BatimentWindowController;
+import app.controller.BatimentsParVilleController;
 import app.controller.LoginController;
+import app.model.Batiment;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {
@@ -23,11 +27,23 @@ public class MainApp extends Application {
             this.primaryStage.setTitle("Visit My Cities");
 
             initRootLayout();
-
             showLogin();
+
         }catch(Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Returns the main stage.
+     * @return
+     */
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
+    public static void main(String[] args) {
+        launch(args);
     }
     
     /**
@@ -48,10 +64,6 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
-
-    /**
-     * Shows the person overview inside the root layout.
-     */
 
     public void showLogin() {
         try {
@@ -79,29 +91,50 @@ public class MainApp extends Application {
         try {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("view/ListeVille.fxml"));
+            loader.setLocation(MainApp.class.getResource("view/BatimentsParVille.fxml"));
             AnchorPane listeVille = (AnchorPane) loader.load();
             
             // Set person overview into the center of root layout.
             rootLayout.setCenter(listeVille);
 
-            ListeVilleController controller = loader.getController();
+            BatimentsParVilleController controller = loader.getController();
             controller.setMainApp(this);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
-	/**
-	 * Returns the main stage.
-	 * @return
-	 */
-	public Stage getPrimaryStage() {
-		return primaryStage;
-	}
 
-    public static void main(String[] args) {
-        launch(args);
+    public boolean showBatimentEditWindow(Batiment batiment) {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/BatimentWindow.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            // Create the dialog Stage.
+            Stage stage = new Stage();
+            stage.setTitle("New Batiment");
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            stage.setScene(scene);
+
+            // Set the person into the controller.
+            BatimentWindowController controller = loader.getController();
+            controller.setMainApp(this);
+            controller.setStage(stage);
+            controller.setBatiment(batiment);
+
+            // Show the dialog and wait until the user closes it
+            stage.showAndWait();
+
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
+    
+
 }
