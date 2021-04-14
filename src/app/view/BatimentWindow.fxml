@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane prefHeight="665.0" prefWidth="563.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.BatimentWindowController">
+    <GridPane prefHeight="619.0" prefWidth="664.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="335.0" minWidth="10.0" prefWidth="181.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="499.0" minWidth="10.0" prefWidth="499.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+        <children>
+            <Label text="Adresse" GridPane.rowIndex="1" />
+            <TextField fx:id="adresseField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Coordonnées" GridPane.rowIndex="2" />
+            <TextField fx:id="coordonneesField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label text="Protection" GridPane.rowIndex="3" />
+            <TextField fx:id="protectionField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="Architecture" GridPane.rowIndex="5" />
+            <Label GridPane.rowIndex="6" />
+            <Label text="Nom" />
+            <TextField fx:id="nomField" GridPane.columnIndex="1" />
+            <Label text="Date de construction" GridPane.rowIndex="4" />
+         <TextArea fx:id="architectureField" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+         <TextField fx:id="dateConstructionField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        </children>
+        <padding>
+            <Insets left="10.0" right="10.0" />
+        </padding>
+    </GridPane>
+    <ButtonBar layoutX="369.0" layoutY="611.0" prefHeight="40.0" prefWidth="174.0">
+        <buttons>
+            <Button mnemonicParsing="false" onAction="#Ok" text="OK" />
+            <Button mnemonicParsing="false" onAction="#Cancel" text="Cancel" />
+        </buttons>
+    </ButtonBar>
+</AnchorPane>
