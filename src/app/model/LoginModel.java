@@ -38,4 +38,21 @@ public class LoginModel {
         }
     }
 
+    public void selectUser(String username) throws SQLException{
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String sql = " SELECT * FROM user WHERE user_nom = ?";
+        try{
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, username);
+
+            resultSet = preparedStatement.executeQuery();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    //public boolean getAdmin(username){}
+
 }

@@ -1,25 +1,33 @@
 package app.controller;
 
+import app.DBConnection;
 import app.MainApp;
 import app.model.Batiment;
 import app.model.BatimentModel;
+import app.model.VilleModel;
 import app.util.DateUtil;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
 public class BatimentWindowController {
 
     public BatimentModel batimentModel = new BatimentModel();
-
+    public VilleModel villeModel = new VilleModel();
+    Connection connection;
     @FXML
     private TextField nomField;
     @FXML
@@ -34,6 +42,8 @@ public class BatimentWindowController {
     private TextField dateConstructionField;
     /*@FXML
     private TextField imageField;*/
+    @FXML
+    private ComboBox<String> villeField;
 
     private Stage stage;
     private Batiment batiment;
@@ -43,6 +53,8 @@ public class BatimentWindowController {
 
     @FXML
     private void initialize() {
+        villeModel.fillComboBox();
+        villeField.setItems(villeModel.getVilleData());
     }
 
     public void setMainApp(MainApp mainApp) {this.mainApp = mainApp; }
@@ -86,10 +98,8 @@ public class BatimentWindowController {
      * Called when the user clicks ok.
      */
     @FXML
-    private void Ok() {
+    private void Ok() throws SQLException {
         if (isInputValid()) {
-
-
             batiment.setNom(nomField.getText());
             batiment.setAdresse(adresseField.getText());
             batiment.setCoordonnees(coordonneesField.getText());
@@ -97,9 +107,9 @@ public class BatimentWindowController {
             batiment.setArchitecture(architectureField.getText());
             batiment.setDateConstruction(Integer.parseInt(dateConstructionField.getText()));
             //batiment.setImage(imageField.getText());
-
-            batimentModel.insertBatiment(batiment.getNom(),batiment.getAdresse(),batiment.getCoordonnees(), batiment.getProtection(), batiment.getArchitecture(), batiment.getDateConstruction());
-
+            int villeId = villeModel.getIdFromNom(villeField.getSelectionModel().getSelectedItem());
+            batiment.setVille(villeId);
+            batimentModel.insertBatiment(batiment.getNom(),batiment.getAdresse(),batiment.getCoordonnees(), batiment.getProtection(), batiment.getArchitecture(), batiment.getDateConstruction(), batiment.getVille());
 
             okClicked = true;
             stage.close();

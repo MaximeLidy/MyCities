@@ -3,7 +3,6 @@ package app.controller;
 import app.DBConnection;
 import app.MainApp;
 import app.model.Batiment;
-import app.model.BatimentModel;
 import app.model.VilleModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,6 +23,22 @@ import java.util.ResourceBundle;
 public class BatimentsParVilleController implements Initializable {
 
     private MainApp mainApp;
+    private String username;
+    @FXML
+    private Label liste;
+    @FXML
+    private ComboBox<String> combo;
+    @FXML
+    private Button changeSelect;
+
+    Connection connection;
+    Statement st;
+    ResultSet rs;
+
+    public ObservableList<String> listeUser = FXCollections.observableArrayList();
+    public VilleModel villeModel = new VilleModel();
+
+
 
     public void setMainApp(MainApp mainApp) {this.mainApp = mainApp; }
 
@@ -37,31 +52,23 @@ public class BatimentsParVilleController implements Initializable {
         }
     }
 
-    Connection connection;
-    Statement st;
-    ResultSet rs;
-    public ObservableList<String> listeUser = FXCollections.observableArrayList();
-    public VilleModel villeModel = new VilleModel();
-
-    @FXML
-    private Label liste;
-
-    @FXML
-    private ComboBox<String> combo;
-
-    @FXML
-    private Button changeSelect;
+      /*isUserAdmin(isAdmin){
+        String admin = isAdmin;
+        if(isAdmin, == "yes"){
+            afficher button;
+        }
+    }*/
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb){
         // TODO
-        buildData();
+        villeModel.fillComboBox();
+        combo.setItems(villeModel.getVilleData());
 
         changeSelect.setOnAction((event) -> {
             System.out.println("Button clicked");
             handle(event);
         });
-
     }
 
     public void handle(ActionEvent e) {
@@ -71,31 +78,6 @@ public class BatimentsParVilleController implements Initializable {
         // do something with that string
     }
 
-
-    //combobox sql connection
-    public void buildData() {
-        ObservableList<String> data = FXCollections.observableArrayList();
-        //connection = SqlConnection.CustomerConnection();
-        connection = DBConnection.Connector();
-        try {
-            String SQL = "Select ville_nom From ville";
-            ResultSet rs = connection.createStatement().executeQuery(SQL);
-            while(rs.next()){
-                data.add(rs.getString("ville_nom"));
-            }
-            combo.setItems(data);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Error Building ComboBox Data");
-        }
-        if (connection == null) {
-            System.exit(1);
-            System.out.println("Connection failed");
-        }
-    }
-
-
     public boolean isDbConnected() {
         try {
             return connection.isClosed();
@@ -104,6 +86,8 @@ public class BatimentsParVilleController implements Initializable {
             return false;
         }
     }
+
+    //public void userName(String username) {}
 
     // public void SelectVille(Object ville){
     //     String t = combo.getSelectionModel().getSelectedItem();
