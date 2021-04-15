@@ -43,6 +43,7 @@ public class BatimentModel {
         }
     };
 
+
     public void updateBatiment(String nom, String adresse, String coordonnees, String protection, String architecture,
                                int date, String image, String ville, int id) {
         System.out.println(id);

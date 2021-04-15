@@ -6,20 +6,19 @@ import javafx.collections.ObservableList;
 
 import java.sql.*;
 public class VilleModel {
+
     Connection connection;
 
     private ObservableList<String> villeData = FXCollections.observableArrayList();
     public ObservableList<String> getVilleData() { return villeData; }
 
-    public VilleModel() {
-        connection = DBConnection.Connector();
-        if (connection == null) {
-            System.out.println("connection not successful");
-            System.exit(1);
-        }
-    }
+    public VilleModel() {}
 
     public void fillComboBox() {
+
+        //connection = SqlConnection.CustomerConnection();
+        connection = DBConnection.Connector();
+
         try {
             String SQL = "SELECT ville_nom FROM ville";
             ResultSet rs = connection.createStatement().executeQuery(SQL);

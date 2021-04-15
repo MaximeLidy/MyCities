@@ -137,6 +137,9 @@ public class BatimentWindowController {
         if (adresseField.getText() == null || adresseField.getText().length() == 0) {
             errorMessage += "Adresse invalide.\n";
         }
+        if (villeField.getSelectionModel().getSelectedItem() == null || villeField.getSelectionModel().getSelectedItem().length() == 0) {
+            errorMessage += "Ville invalide.\n";
+        }
         if (errorMessage.length() == 0) {
             return true;
         } else {
@@ -152,6 +155,4 @@ public class BatimentWindowController {
             return false;
         }
     }
-
-
 }
