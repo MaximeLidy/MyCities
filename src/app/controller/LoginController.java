@@ -2,6 +2,7 @@ package app.controller;
 
 import app.MainApp;
 import app.model.LoginModel;
+import app.model.UserSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -33,6 +34,8 @@ public class LoginController {
         try{
             if(loginModel.isLogin(txtUsername.getText(),txtPassword.getText())){
                 mainApp.startListeVille();
+                //UserSession.getInstance(txtUsername.getText());
+                //System.out.println(UserSession.getInstance(txtUsername.getText()).getUserName());
             }else{
                 isConnected.setText("Wrong login");
             }

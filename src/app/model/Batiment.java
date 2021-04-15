@@ -5,7 +5,6 @@ import java.util.Date;
 
 public class Batiment {
 
-    private static int instances = 0;
     private int id;
     private String nom;
     private String adresse;
@@ -14,13 +13,23 @@ public class Batiment {
     private String architecture;
     private int dateConstruction;
     private String image;
+    private String ville;
 
-    public Batiment(){
-        instances++;
-    };
+    public Batiment(){};
+
+    public Batiment(int id, String nom, String adresse, String coordonnees, String protection, String architecture, int dateConstruction, String image, String ville){
+        this.id = id;
+        this.nom = nom;
+        this.adresse = adresse;
+        this.coordonnees = coordonnees;
+        this.protection = protection;
+        this.architecture = architecture;
+        this.dateConstruction = dateConstruction;
+        this.image = image;
+        this.ville = ville;
+    }
 
     public Batiment(int id, String nom, String adresse, String coordonnees, String protection, String architecture, int dateConstruction, String image){
-        instances++;
         this.id = id;
         this.nom = nom;
         this.adresse = adresse;
@@ -30,8 +39,6 @@ public class Batiment {
         this.dateConstruction = dateConstruction;
         this.image = image;
     }
-
-    public static int getInstances() { return instances; }
 
     public int getId() { return id; }
 
@@ -65,4 +72,7 @@ public class Batiment {
 
     public void setImage(String image) { this.image = image; }
 
+    public String getVille() { return ville; }
+
+    public void setVille(String ville) { this.ville = ville; }
 }

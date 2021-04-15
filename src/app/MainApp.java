@@ -6,7 +6,6 @@ import app.model.Batiment;
 import app.controller.BatimentWindowController;
 import app.controller.BatimentsParVilleController;
 import app.controller.LoginController;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -19,6 +18,7 @@ public class MainApp extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
+    // private String username;
 
     @Override
     public void start(Stage primaryStage) {
