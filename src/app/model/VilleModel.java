@@ -24,7 +24,7 @@ public class VilleModel {
         //connection = SqlConnection.CustomerConnection();
         connection = DBConnection.Connector();
         try {
-            String SQL = "SELECT ville_nom FROM ville";
+            String SQL = "Select ville_nom From ville";
             ResultSet rs = connection.createStatement().executeQuery(SQL);
             while(rs.next()){
                 villeData.add(rs.getString("ville_nom"));
@@ -42,15 +42,37 @@ public class VilleModel {
     public int getIdFromNom(String nom) {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        String SQL = "SELECT ville_id FROM ville WHERE ville_nom = ?";
+        String SQL = "Select ville_id From ville WHERE ville_nom = ?";
         try {
             preparedStatement = connection.prepareStatement(SQL);
             preparedStatement.setString(1, nom);
             resultSet = preparedStatement.executeQuery();
-            return resultSet.getInt("ville_id");
+            int villeId = resultSet.getInt("ville_id");
+            return villeId;
         } catch (Exception e) {
             e.printStackTrace();
         }return 0;
+    }
+
+    public boolean isVille(String ville) throws SQLException {
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String query = "select * from ville where ville_id = ?";
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, ville);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            return false;
+        } finally {
+            preparedStatement.close();
+            resultSet.close();
+        }
     }
 }
 
