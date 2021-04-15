@@ -89,7 +89,6 @@ public class BatimentWindowController {
     private void Ok() {
         if (isInputValid()) {
 
-
             batiment.setNom(nomField.getText());
             batiment.setAdresse(adresseField.getText());
             batiment.setCoordonnees(coordonneesField.getText());
@@ -99,7 +98,6 @@ public class BatimentWindowController {
             //batiment.setImage(imageField.getText());
 
             batimentModel.insertBatiment(batiment.getNom(),batiment.getAdresse(),batiment.getCoordonnees(), batiment.getProtection(), batiment.getArchitecture(), batiment.getDateConstruction());
-
 
             okClicked = true;
             stage.close();

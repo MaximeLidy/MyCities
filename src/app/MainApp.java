@@ -6,7 +6,7 @@ import app.model.Batiment;
 import app.controller.BatimentWindowController;
 import app.controller.BatimentsParVilleController;
 import app.controller.LoginController;
-import app.model.Batiment;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

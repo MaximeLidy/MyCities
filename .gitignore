@@ -25,3 +25,5 @@ local.properties
 .loadpath
 .factorypath
 .vscode
+launch.json
+settings.json
