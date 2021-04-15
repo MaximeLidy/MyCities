@@ -9,9 +9,9 @@ public class BatimentModel {
         connection = DBConnection.Connector();
     }
 
-    public void insertBatiment(String nom, String adresse, String coordonnees, String protection, String architecture, int date, int ville) {
+    public void insertBatiment(String nom, String adresse, String coordonnees, String protection, String architecture, int date, String image, String ville) {
 
-        String sql = "INSERT INTO BATIMENT (batiment_nom, adresse, coordonnees, protection, architecture, dateConstruction, image, ville_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO BATIMENT (batiment_nom, adresse, coordonnees, protection, architecture, dateConstruction, image, ville) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement ps = connection.prepareStatement(sql)){
             ps.setString(1, nom);
             ps.setString(2, adresse);
@@ -19,8 +19,8 @@ public class BatimentModel {
             ps.setString(4, protection);
             ps.setString(5, architecture);
             ps.setInt(6, date);
-            ps.setString(7, "image");
-            ps.setInt(8, ville);
+            ps.setString(7, image);
+            ps.setString(8, ville);
             ps.executeUpdate();
 
             System.out.println("A new batiment was inserted successfully!");

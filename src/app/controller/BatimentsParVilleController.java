@@ -72,7 +72,6 @@ public class BatimentsParVilleController implements Initializable {
     }
 
     public void handle(ActionEvent e) {
-        System.out.println("teste1");
         String userChoice = combo.getSelectionModel().getSelectedItem();
         System.out.println(userChoice);
         // do something with that string

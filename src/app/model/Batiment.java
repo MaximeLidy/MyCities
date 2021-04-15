@@ -13,11 +13,11 @@ public class Batiment {
     private String architecture;
     private int dateConstruction;
     private String image;
-    private int ville;
+    private String ville;
 
     public Batiment(){};
 
-    public Batiment(int id, String nom, String adresse, String coordonnees, String protection, String architecture, int dateConstruction, String image, int ville){
+    public Batiment(int id, String nom, String adresse, String coordonnees, String protection, String architecture, int dateConstruction, String image, String ville){
         this.id = id;
         this.nom = nom;
         this.adresse = adresse;
@@ -61,7 +61,7 @@ public class Batiment {
 
     public void setImage(String image) { this.image = image; }
 
-    public int getVille() { return ville; }
+    public String getVille() { return ville; }
 
-    public void setVille(int ville) { this.ville = ville; }
+    public void setVille(String ville) { this.ville = ville; }
 }
