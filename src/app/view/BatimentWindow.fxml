@@ -36,7 +36,8 @@
             <Label text="Image" GridPane.rowIndex="6" />
          <Label text="Ville" GridPane.rowIndex="7" />
          <ComboBox fx:id="villeField" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-         <Button fx:id="imageField" mnemonicParsing="false" onAction="#setImageField" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+         <Button fx:id="imageField" mnemonicParsing="false" onAction="#setImageField" text="Selectionner Image" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+         <Label fx:id="imageLabel" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
         </children>
         <padding>
             <Insets left="10.0" right="10.0" />

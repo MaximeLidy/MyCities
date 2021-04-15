@@ -18,7 +18,7 @@ public class MainApp extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
-    private String username;
+    // private String username;
 
     @Override
     public void start(Stage primaryStage) {
@@ -105,7 +105,7 @@ public class MainApp extends Application {
         }
     }
 
-    public boolean showBatimentEditWindow(Batiment batiment) {
+    public boolean showBatimentEditWindow(Batiment batiment, String type) {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();
@@ -125,6 +125,7 @@ public class MainApp extends Application {
             controller.setMainApp(this);
             controller.setStage(stage);
             controller.setBatiment(batiment);
+            controller.setType(type);
 
             // Show the dialog and wait until the user closes it
             stage.showAndWait();

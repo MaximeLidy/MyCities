@@ -29,6 +29,17 @@ public class Batiment {
         this.ville = ville;
     }
 
+    public Batiment(int id, String nom, String adresse, String coordonnees, String protection, String architecture, int dateConstruction, String image){
+        this.id = id;
+        this.nom = nom;
+        this.adresse = adresse;
+        this.coordonnees = coordonnees;
+        this.protection = protection;
+        this.architecture = architecture;
+        this.dateConstruction = dateConstruction;
+        this.image = image;
+    }
+
     public int getId() { return id; }
 
     public void setId(int id) { this.id = id; }

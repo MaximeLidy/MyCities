@@ -35,19 +35,5 @@ public class VilleModel {
             System.out.println("Connection failed");
         }
     }
-
-    public int getIdFromNom(String nom) {
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-        String SQL = "SELECT ville_id FROM ville WHERE ville_nom = ?";
-        try {
-            preparedStatement = connection.prepareStatement(SQL);
-            preparedStatement.setString(1, nom);
-            resultSet = preparedStatement.executeQuery();
-            return resultSet.getInt("ville_id");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }return 0;
-    }
 }
 

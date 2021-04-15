@@ -1,16 +1,9 @@
 package app.controller;
 
-import app.DBConnection;
 import app.MainApp;
 import app.model.Batiment;
 import app.model.BatimentModel;
 import app.model.VilleModel;
-import app.util.DateUtil;
-import javafx.beans.property.Property;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -19,9 +12,6 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Date;
 
 public class BatimentWindowController {
 
@@ -43,6 +33,8 @@ public class BatimentWindowController {
     @FXML
     private Button imageField;
     @FXML
+    private Label imageLabel = new Label();
+    @FXML
     private ComboBox<String> villeField;
     private String image;
 
@@ -50,9 +42,17 @@ public class BatimentWindowController {
     private Batiment batiment;
     private boolean okClicked = false;
 
+    private String type;
+
+    private int batId;
+    public void setId(int id) { batId = id; }
+    public int getId(){ return batId; }
+
     private MainApp mainApp;
 
     public void setMainApp(MainApp mainApp) {this.mainApp = mainApp; }
+
+    public void setType(String s) { type = s; }
 
     @FXML
     private void initialize() {
@@ -68,13 +68,14 @@ public class BatimentWindowController {
     //Sets the batiment to be edited in the window
     public void setBatiment(Batiment batiment) {
         this.batiment = batiment;
-
+        setId(batiment.getId());
         nomField.setText(batiment.getNom());
         adresseField.setText(batiment.getAdresse());
         coordonneesField.setText(batiment.getCoordonnees());
         protectionField.setText(batiment.getProtection());
         architectureField.setText(batiment.getArchitecture());
         dateConstructionField.setText(Integer.toString(batiment.getDateConstruction()));
+        System.out.println(batId);
         //imageField.setText(batiment.getImage());
         //villeField.setSelectionModel().getVille();
     }
@@ -89,13 +90,16 @@ public class BatimentWindowController {
         File selectedFile = fc.showOpenDialog(null);
         if(selectedFile != null){
             image = selectedFile.getName();
+            imageLabel.setText(image);
         }
     }
 
     //Called when the user clicks ok
     @FXML
-    private void Ok(){
+    private void Ok() {
+        System.out.println(batId);
         if (isInputValid()) {
+            System.out.println(batId);
             batiment.setNom(nomField.getText());
             batiment.setAdresse(adresseField.getText());
             batiment.setCoordonnees(coordonneesField.getText());
@@ -104,8 +108,14 @@ public class BatimentWindowController {
             batiment.setDateConstruction(Integer.parseInt(dateConstructionField.getText()));
             batiment.setImage(imageField.getText());
             batiment.setVille(villeField.getSelectionModel().getSelectedItem());
-            batimentModel.insertBatiment(batiment.getNom(),batiment.getAdresse(),batiment.getCoordonnees(), batiment.getProtection(),
-                    batiment.getArchitecture(), batiment.getDateConstruction(), image, batiment.getVille());
+            if(type == "new") {
+                batimentModel.insertBatiment(batiment.getNom(), batiment.getAdresse(), batiment.getCoordonnees(), batiment.getProtection(),
+                        batiment.getArchitecture(), batiment.getDateConstruction(), image, batiment.getVille());
+            }
+            if(type == "edit"){
+                batimentModel.updateBatiment(batiment.getNom(), batiment.getAdresse(), batiment.getCoordonnees(), batiment.getProtection(),
+                        batiment.getArchitecture(), batiment.getDateConstruction(), image, batiment.getVille(), batId);
+            }
             okClicked = true;
             stage.close();
         }
@@ -142,5 +152,6 @@ public class BatimentWindowController {
             return false;
         }
     }
+
 
 }
