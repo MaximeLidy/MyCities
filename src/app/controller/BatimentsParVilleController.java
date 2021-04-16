@@ -10,13 +10,18 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+
+import javafx.scene.control.*;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import javafx.scene.input.MouseEvent;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -71,13 +76,57 @@ public class BatimentsParVilleController implements Initializable {
     @FXML
     private TableColumn<Batiment, String> image;
 
+    private Batiment selectedBatiment;
+
+    @FXML
+    private void selectBatiment(MouseEvent event){
+        selectedBatiment = table.getSelectionModel().getSelectedItem();
+        System.out.println(selectedBatiment);
+    }
+
     @FXML
     private void NewBatiment() {
         Batiment tempBatiment = new Batiment();
-        boolean okClicked = mainApp.showBatimentEditWindow(tempBatiment);
+        String type = "new";
+        boolean okClicked = mainApp.showBatimentEditWindow(tempBatiment, type);
         if (okClicked) {
             // BatimentModel.insertBatiment(id,nom,adresse);
             // BatimentModel.getVehiculeData().add(tempBatiment);
+
+        }
+    }
+
+    @FXML
+    private void EditBatiment() {
+        String type = "edit";
+        if (selectedBatiment != null) {
+            boolean okClicked = mainApp.showBatimentEditWindow(selectedBatiment, type);
+            if (okClicked) {
+                showBatimentDetails(selectedBatiment);
+            }
+        } else {
+            // Nothing selected.
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.initOwner(mainApp.getPrimaryStage());
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Person Selected");
+            alert.setContentText("Please select a person in the table.");
+
+            alert.showAndWait();
+        }
+    }
+
+    private void showBatimentDetails(Batiment batiment) {
+        if (batiment != null) {
+            // Fill the labels with info from the person object.
+            nom.setText(batiment.getNom());
+            adresse.setText(batiment.getAdresse());
+            coordonnees.setText(batiment.getCoordonnees());
+            protection.setText(batiment.getProtection());
+            architecture.setText(batiment.getArchitecture());
+            dateConstruction.setText(Integer.toString(batiment.getDateConstruction()));
+            /*etatLabel.setText(batiment.getEtat());
+            kmLabel.setText(Integer.toString(batiment.getKm()));*/
         }
     }
 

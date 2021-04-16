@@ -15,8 +15,10 @@ public class VilleModel {
     public VilleModel() {}
 
     public void fillComboBox() {
+
         //connection = SqlConnection.CustomerConnection();
         connection = DBConnection.Connector();
+
         try {
             String SQL = "SELECT ville_nom FROM ville";
             ResultSet rs = connection.createStatement().executeQuery(SQL);
