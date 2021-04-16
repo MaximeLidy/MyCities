@@ -43,6 +43,33 @@ public class BatimentModel {
         }
     };
 
+
+    public void updateBatiment(String nom, String adresse, String coordonnees, String protection, String architecture,
+                               int date, String image, String ville, int id) {
+        System.out.println(id);
+        String sql = "UPDATE BATIMENT SET batiment_nom = ?, adresse = ?, coordonnees = ?, protection = ?, architecture = ?, dateConstruction = ?, image = ?, ville = ? WHERE batiment_id = ?";
+
+        try (PreparedStatement ps = connection.prepareStatement(sql)){
+            ps.setString(1, nom);
+            ps.setString(2, adresse);
+            ps.setString(3, coordonnees);
+            ps.setString(4, protection);
+            ps.setString(5, architecture);
+            ps.setInt(6, date);
+            ps.setString(7, image);
+            ps.setString(8, ville);
+            ps.setInt(9, id);
+            ps.executeUpdate();
+            System.out.println("A new batiment was edited successfully!");
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+
+            System.out.println("A new batiment was edited failed!");
+
+        }
+    }
+
     public void fillTableView(String ville) throws SQLException{
         String SQL = "Select batiment_id, batiment_nom, adresse, coordonnees, protection, architecture, dateConstruction," + 
                             " image From batiment, ville WHERE ville_nom = ? AND batiment.ville = ville.ville_nom";

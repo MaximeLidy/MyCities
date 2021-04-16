@@ -78,7 +78,7 @@
                         <Font name="Calibri" size="18.0" />
                      </font>
                   </Button>
-                  <Button contentDisplay="CENTER" layoutX="47.0" layoutY="468.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="244.0" style="-fx-background-color: green;" text="Edit" textFill="WHITE" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="468.0">
+                  <Button contentDisplay="CENTER" layoutX="47.0" layoutY="468.0" mnemonicParsing="false" onAction="#EditBatiment" prefHeight="39.0" prefWidth="244.0" style="-fx-background-color: green;" text="Edit" textFill="WHITE" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="468.0">
                      <font>
                         <Font name="Calibri" size="18.0" />
                      </font>
@@ -86,7 +86,7 @@
                   <Button layoutX="62.0" layoutY="373.0" mnemonicParsing="false" onAction="#imageload" prefHeight="25.0" prefWidth="246.0" text="loload image" />
                </children>
             </AnchorPane>
-            <ImageView fx:id="photo" fitHeight="251.0" fitWidth="370.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="photo" fitHeight="245.0" fitWidth="370.0" pickOnBounds="true" preserveRatio="true" />
       </children>
    </GridPane>
 </children>
