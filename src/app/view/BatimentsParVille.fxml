@@ -7,56 +7,57 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="900.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.BatimentsParVilleController">
+<AnchorPane maxHeight="1330.0" prefHeight="900.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.BatimentsParVilleController">
 <children>
-   <GridPane fx:id="label" layoutY="-4.0" prefHeight="647.0" prefWidth="800.0" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+   <GridPane fx:id="label" layoutY="-4.0" style="-fx-background-color: #808080;" styleClass="bor" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <columnConstraints>
-         <ColumnConstraints hgrow="SOMETIMES" maxWidth="363.0" minWidth="10.0" prefWidth="125.0" />
-         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="915.0" minWidth="10.0" prefWidth="915.0" />
-         <ColumnConstraints hgrow="SOMETIMES" maxWidth="417.0" minWidth="10.0" prefWidth="191.0" />
+         <ColumnConstraints hgrow="SOMETIMES" maxWidth="409.0" minWidth="10.0" prefWidth="369.0" />
+         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="977.0" minWidth="10.0" prefWidth="829.0" />
+         <ColumnConstraints hgrow="SOMETIMES" maxWidth="417.0" minWidth="0.0" prefWidth="152.0" />
       </columnConstraints>
       <rowConstraints>
-         <RowConstraints maxHeight="345.0" minHeight="10.0" prefHeight="184.0" vgrow="SOMETIMES" />
-         <RowConstraints maxHeight="516.0" minHeight="10.0" prefHeight="516.0" vgrow="SOMETIMES" />
+         <RowConstraints maxHeight="345.0" minHeight="10.0" prefHeight="302.0" vgrow="SOMETIMES" />
+         <RowConstraints maxHeight="545.0" minHeight="10.0" prefHeight="545.0" vgrow="SOMETIMES" />
       </rowConstraints>
       <children>
-         <ComboBox fx:id="combo" accessibleRole="BUTTON" maxWidth="1.7976931348623157E308" promptText="Choix ville" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES">
+         <ComboBox fx:id="combo" accessibleRole="BUTTON" maxWidth="1.7976931348623157E308" prefHeight="41.0" prefWidth="448.0" promptText="Choix ville" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES">
                <GridPane.margin>
                   <Insets left="200.0" right="200.0" />
                </GridPane.margin>
          </ComboBox>
-         <Button mnemonicParsing="false" onAction="#NewBatiment" prefHeight="25.0" prefWidth="86.0" text="New" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+            <Button fx:id="changeSelect" mnemonicParsing="false" onAction="#LoadingBatiment" prefHeight="39.0" prefWidth="130.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" text="Confirmer" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                <GridPane.margin>
-                  <Insets left="10.0" top="10.0" />
-               </GridPane.margin></Button>
-            <Button fx:id="changeSelect" mnemonicParsing="false" onAction="#LoadingBatiment" text="Confirmer" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
-               <GridPane.margin>
-                  <Insets left="10.0" />
+                  <Insets left="500.0" right="50.0" />
                </GridPane.margin>
+               <font>
+                  <Font size="18.0" />
+               </font>
             </Button>
             <ScrollPane prefHeight="519.0" prefWidth="897.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <content>
-                  <TableView fx:id="table" prefHeight="512.0" prefWidth="913.0">
+                  <TableView fx:id="table" onMouseClicked="#getSelectd" opacity="0.54" prefHeight="543.0" prefWidth="827.0" style="-fx-background-color: #D3D3D3; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);">
                     <columns>
-                      <TableColumn fx:id="id" prefWidth="98.0" text="id" />
-                      <TableColumn fx:id="nom" minWidth="4.0" prefWidth="115.0" text="nom" />
-                        <TableColumn fx:id="adresse" minWidth="0.0" prefWidth="85.0" text="adresse" />
-                        <TableColumn fx:id="coordonnees" prefWidth="110.0" text="coordonnees" />
-                        <TableColumn fx:id="protection" prefWidth="110.0" text="protection" />
-                        <TableColumn fx:id="architecture" prefWidth="98.0" text="architecture" />
-                        <TableColumn fx:id="dateConstruction" maxWidth="1.7976931348623157E308" prefWidth="130.0" text="dateConstruction" />
-                        <TableColumn fx:id="image" maxWidth="1.7976931348623157E308" prefWidth="165.0" text="image" />
+                        <TableColumn fx:id="id" minWidth="0.0" prefWidth="0.0" text="id" visible="false" />
+                        <TableColumn fx:id="nom" minWidth="0.0" prefWidth="400.0" text="nom" />
+                        <TableColumn fx:id="image" maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="426.0" text="image" />
+                        <TableColumn fx:id="adresse" minWidth="0.0" prefWidth="0.0" text="adresse" visible="false" />
+                        <TableColumn fx:id="coordonnees" minWidth="0.0" prefWidth="0.0" text="coordonnees" visible="false" />
+                        <TableColumn fx:id="protection" minWidth="0.0" prefWidth="0.0" text="protection" visible="false" />
+                        <TableColumn fx:id="architecture" minWidth="0.0" prefWidth="0.0" text="architecture" visible="false" />
+                        <TableColumn fx:id="dateConstruction" minWidth="0.0" prefWidth="0.0" text="dateConstruction" visible="false" />
                     </columns>
                   </TableView>
                </content>
             </ScrollPane>
-            <Label fx:id="message" opacity="0.87" prefHeight="44.0" prefWidth="264.0" GridPane.columnIndex="1">
+            <Label fx:id="message" opacity="0.87" prefHeight="44.0" prefWidth="264.0" textFill="FIREBRICK" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets bottom="150.0" left="100.0" right="100.0" />
                </GridPane.margin>
@@ -64,6 +65,28 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
+            <AnchorPane prefHeight="523.0" prefWidth="327.0" style="-fx-background-color: black; -fx-border-color: red;" GridPane.rowIndex="1">
+               <children>
+                  <TextField fx:id="name" alignment="CENTER" blendMode="SCREEN" layoutX="46.0" layoutY="34.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="250.0" promptText="Nom" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="46.0" AnchorPane.topAnchor="34.0" />
+                  <TextField fx:id="adresse1" alignment="CENTER" blendMode="SCREEN" layoutX="50.0" layoutY="88.0" prefHeight="37.0" prefWidth="250.0" promptText="Adresse" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="46.0" AnchorPane.topAnchor="88.0" />
+                  <TextField fx:id="coordonnees1" alignment="CENTER" layoutX="48.0" layoutY="142.0" prefHeight="37.0" prefWidth="250.0" promptText="Coordonnees" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="46.0" AnchorPane.topAnchor="142.0" />
+                  <TextField fx:id="protection1" alignment="CENTER" layoutX="47.0" layoutY="196.0" prefHeight="37.0" prefWidth="250.0" promptText="Protection" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="196.0" />
+                  <TextField fx:id="architecture1" alignment="CENTER" layoutX="47.0" layoutY="247.0" prefHeight="39.0" prefWidth="250.0" promptText="Architecture" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="247.0" />
+                  <TextField fx:id="dateConstruction1" alignment="CENTER" blendMode="SCREEN" layoutX="47.0" layoutY="305.0" prefHeight="39.0" prefWidth="250.0" promptText="Date" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="305.0" />
+                  <Button contentDisplay="CENTER" layoutX="49.0" layoutY="473.0" mnemonicParsing="false" onAction="#NewBatiment" prefHeight="37.0" prefWidth="244.0" style="-fx-background-color: firebrick; -fx-text-fill: white;" text="New" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="46.0" AnchorPane.topAnchor="421.0">
+                     <font>
+                        <Font name="Calibri" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button contentDisplay="CENTER" layoutX="47.0" layoutY="468.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="244.0" style="-fx-background-color: green;" text="Edit" textFill="WHITE" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="468.0">
+                     <font>
+                        <Font name="Calibri" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="62.0" layoutY="373.0" mnemonicParsing="false" onAction="#imageload" prefHeight="25.0" prefWidth="246.0" text="loload image" />
+               </children>
+            </AnchorPane>
+            <ImageView fx:id="photo" fitHeight="251.0" fitWidth="370.0" pickOnBounds="true" preserveRatio="true" />
       </children>
    </GridPane>
 </children>

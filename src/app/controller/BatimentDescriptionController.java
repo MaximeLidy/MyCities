@@ -1,79 +1,42 @@
 package app.controller;
 
-import app.MainApp;
-import app.model.Batiment;
 import app.model.BatimentModel;
+import app.model.VilleModel;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ResourceBundle;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 
-public class BatimentDescriptionController {
+public class BatimentDescriptionController implements Initializable {
+
+    Connection connection;
+    Statement st;
+    ResultSet rs;
+    ObservableList<String> data = FXCollections.observableArrayList();
+
+    public ObservableList<String> listeUser = FXCollections.observableArrayList();
+    public VilleModel villeModel = new VilleModel();
     public BatimentModel batimentModel = new BatimentModel();
-    @FXML
-    ImageView imageBatiment;
-    @FXML
-    private Label villeLabel;
-    @FXML
-    private Label MonumentLabel;
-    @FXML
-    private Label adresseLabel;
-    @FXML
-    private Label coordonneesLabel;
-    @FXML
-    private Label protectionLabel;
-    @FXML
-    private Label architectureLabel;
-    @FXML
-    private Label dateConstructionLabel;
-    /*@FXML
-    private Label imageLabel;*/
 
-    private Stage stage;
-    private Batiment batiment;
+    @FXML private ImageView imageBatiment;
+    @FXML private Label nameLable;
+    @FXML private Label adressLabel;
+    @FXML private Label coordonneesLabel;
+    @FXML private Label protectionLabel;
+    @FXML private Label architectureLabel;
+    @FXML private Label dateConstructionLabel;
+    @FXML private Label villeLabel;
 
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // String SQL = "SELECT * FROM ";
 
-    private MainApp mainApp;
-
-    @FXML
-    private void initialize() {
     }
-
-    public void setMainApp(MainApp mainApp) {this.mainApp = mainApp; }
-
-    /**
-     * Sets the stage of this dialog.
-     *
-     * @param stage
-     */
-    public void setStage(Stage stage) {
-        this.stage = stage;
-    }
-
-    /**
-     * Sets the batiment to be edited in the dialog.
-     *
-     * @param batiment
-     */
-    public Batiment getBatiment() {
-
-
-       // this.batiment = batiment;
-
-        villeLabel.setText(batiment.getNom());
-        adresseLabel.setText(batiment.getAdresse());
-        coordonneesLabel.setText(batiment.getCoordonnees());
-        protectionLabel.setText(batiment.getProtection());
-        architectureLabel.setText(batiment.getArchitecture());
-        dateConstructionLabel.setText(Integer.toString(batiment.getDateConstruction()));
-        //imageLabel.setText(batiment.getImage());
-        return batiment;
-    }
-
-
-
-
 }

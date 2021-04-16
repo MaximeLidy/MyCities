@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="489.0" prefWidth="679.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.BatimentDescriptionController">
+<AnchorPane prefHeight="489.0" prefWidth="679.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.BatimentDescriptionController">
    <children>
       <GridPane prefHeight="489.0" prefWidth="679.0">
         <columnConstraints>
@@ -28,81 +28,77 @@
         </rowConstraints>
          <children>
             <ImageView fx:id="imageBatiment" fitHeight="136.0" fitWidth="522.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
-            <Label text="Ville" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+            <Label text="Ville" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
                <GridPane.margin>
                   <Insets right="10.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="villeLabel" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label fx:id="nameLable" prefHeight="26.0" prefWidth="3.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <Label text="Monument" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+            <Label text="Name" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets right="10.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="MonumentLabel" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Label fx:id="adressLabel" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <Label text="Adresse" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+            <Label text="Adresse" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets right="10.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="adresseLabel" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Label fx:id="coordonneesLabel" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <Label text="Coordonnées" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+            <Label text="Coordonnées" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets right="10.0" />
                </GridPane.margin>
             </Label>
-            <Label text="Protcetion" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
-               <GridPane.margin>
-                  <Insets right="10.0" />
-               </GridPane.margin>
-            </Label>
-            <Label fx:id="protectionLabel" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <Label fx:id="protectionLabel" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <Label text="Architecture" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+            <Label text="Protcetion" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets right="10.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="architectureLabel" GridPane.columnIndex="1" GridPane.rowIndex="6">
-               <GridPane.margin>
-                  <Insets left="10.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="Date De Construction" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+            <Label text="Architecture" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets right="10.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="dateConstructionLabel" GridPane.columnIndex="1" GridPane.rowIndex="7">
+            <Label fx:id="architectureLabel" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
+            <Label text="Date De Construction" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets right="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="dateConstructionLabel" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="villeLabel" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="126.0" text="à visiter">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Label fx:id="coordonneesLabel" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <GridPane.margin>
-                  <Insets left="10.0" />
-               </GridPane.margin>
-            </Label>
          </children>
          <opaqueInsets>
             <Insets />

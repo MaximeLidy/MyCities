@@ -67,4 +67,9 @@ public class BatimentModel {
         
     }
 
+    public void descriptionView(String tesst) {
+        System.out.println("model up");
+        
+    }
+
 }
